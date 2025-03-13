@@ -20,32 +20,32 @@ configurations:
     - name: DATABASE_CLUSTER
       valueFrom:
         secretRef:
-          name: DATABASE_CLUSTER # Ensure this matches the secret name in your platform
+          name: DATABASE_CLUSTER # Ensure this matches the secret name
     - name: DATABASE_PASSWORD
       valueFrom:
         secretRef:
-          name: DATABASE_PASSWORD # Ensure this matches the secret name in your platform
+          name: DATABASE_PASSWORD # Ensure this matches the secret name
     - name: JWT_SECRET
       valueFrom:
         secretRef:
-          name: JWT_SECRET # Ensure this matches the secret name in your platform
+          name: JWT_SECRET # Ensure this matches the secret name
     - name: JWT_EXPIRES_IN
       value: 7d # Directly setting this value as no secret is needed
     - name: EMAIL_HOST
       valueFrom:
         secretRef:
-          name: EMAIL_HOST # Ensure this matches the secret name in your platform
+          name: EMAIL_HOST # Ensure this matches the secret name
     - name: EMAIL_PORT
       valueFrom:
         secretRef:
-          name: EMAIL_PORT # Ensure this matches the secret name in your platform
+          name: EMAIL_PORT # Ensure this matches the secret name
     - name: EMAIL_USERNAME
       valueFrom:
         secretRef:
-          name: EMAIL_USERNAME # Ensure this matches the secret name in your platform
+          name: EMAIL_USERNAME # Ensure this matches the secret name
     - name: EMAIL_PASSWORD
       valueFrom:
         secretRef:
-          name: EMAIL_PASSWORD # Ensure this matches the secret name in your platform
+          name: EMAIL_PASSWORD # Ensure this matches the secret name
     - name: PRODUCTION
       value: false # Directly setting this value
