@@ -1,68 +1,51 @@
-# +required The configuration file schema version
 schemaVersion: 1.1
 
-# +optional Incoming connection details for the component
 endpoints:
-  # +required Unique name for the endpoint.
-  # This name will be used when generating the managed API
   - name: my-node-todoapp
-    # +optional Display name for the endpoint.
     displayName: my node todoapp
-    # +required Service section has the user service endpoint details
     service:
-      # +optional Context (base path) of the API that gets exposed via the endpoint.
       basePath: /api
-      # +required Numeric port value that gets exposed via the endpoint
       port: 3000
-    # +required Type of traffic that the endpoint is accepting.
-    # Allowed values: REST, GraphQL, WS, GRPC, TCP, UDP.
     type: REST
-    # +optional Network level visibilities of the endpoint.
-    # Accepted values: Project|Organization|Public(Default).
     networkVisibilities:
       - Public
-    # +optional Path to the schema definition file. Defaults to wild card route if not provided
 
-  # +optional Outgoing connection details for the component.
 dependencies:
-  # +optional Defines the connection references from the Internal Marketplace.
   connectionReferences:
-    # +required Name of the connection.
-    - name: database-connection # Unique name for your DB connection
-      resourceRef: service:/DatabaseProject/MongoDBCluster/v1/ad088/PUBLIC # Your platform's service reference
+    - name: database-connection
+      resourceRef: service:/DatabaseProject/MongoDBCluster/v1/ad088/PUBLIC
 
-# +optional Defines runtime configurations
 configurations:
   env:
     - name: DATABASE_CLUSTER
       valueFrom:
         secretRef:
-          name: database-cluster # Secret name in your secret manager
+          name: DATABASE_CLUSTER # Ensure this matches the secret name in your platform
     - name: DATABASE_PASSWORD
       valueFrom:
         secretRef:
-          name: database-password # Secret name for DB password
+          name: DATABASE_PASSWORD # Ensure this matches the secret name in your platform
     - name: JWT_SECRET
       valueFrom:
         secretRef:
-          name: jwt-secret # Secret name for JWT secret
+          name: JWT_SECRET # Ensure this matches the secret name in your platform
     - name: JWT_EXPIRES_IN
-      value: 7d # You can directly set this value
+      value: 7d # Directly setting this value as no secret is needed
     - name: EMAIL_HOST
       valueFrom:
         secretRef:
-          name: email-host # Email host secret
+          name: EMAIL_HOST # Ensure this matches the secret name in your platform
     - name: EMAIL_PORT
       valueFrom:
         secretRef:
-          name: email-port # Email port secret
+          name: EMAIL_PORT # Ensure this matches the secret name in your platform
     - name: EMAIL_USERNAME
       valueFrom:
         secretRef:
-          name: email-username # Email username secret
+          name: EMAIL_USERNAME # Ensure this matches the secret name in your platform
     - name: EMAIL_PASSWORD
       valueFrom:
         secretRef:
-          name: email-password # Email password secret
+          name: EMAIL_PASSWORD # Ensure this matches the secret name in your platform
     - name: PRODUCTION
-      value: false # Set production flag to false
+      value: false # Directly setting this value
