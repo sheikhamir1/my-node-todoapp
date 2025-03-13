@@ -1,5 +1,5 @@
 {
-  "name": "course-hunter-backend",
+  "name": "my-node-todoapp",
   "version": "1.0.0",
   "main": "server.js",
   "type": "module",
