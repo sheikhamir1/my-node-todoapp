@@ -22,8 +22,6 @@ endpoints:
     networkVisibilities:
       - Public
     # +optional Path to the schema definition file. Defaults to wild card route if not provided
-    # This is only applicable to REST or WS endpoint types.
-    schemaFilePath: openapi.yaml
 
   # +optional Outgoing connection details for the component.
 dependencies:
