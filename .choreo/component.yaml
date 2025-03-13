@@ -19,52 +19,52 @@ endpoints:
     type: REST
     # +optional Network level visibilities of the endpoint.
     # Accepted values: Project|Organization|Public(Default).
-    networkVisibilities: 
+    networkVisibilities:
       - Public
     # +optional Path to the schema definition file. Defaults to wild card route if not provided
     # This is only applicable to REST or WS endpoint types.
-    # The path should be relative to the docker context.
     schemaFilePath: openapi.yaml
 
   # +optional Outgoing connection details for the component.
-  dependencies:
-    # +optional Defines the connection references from the Internal Marketplace.
-    connectionReferences:
-      # +required Name of the connection.
-       - name: database-connection  # Unique name for your DB connection
-      resourceRef: service:/DatabaseProject/MongoDBCluster/v1/ad088/PUBLIC  # Your platform's service reference
-  # +optional Defines runtime configurations
-  configurations:
+dependencies:
+  # +optional Defines the connection references from the Internal Marketplace.
+  connectionReferences:
+    # +required Name of the connection.
+    - name: database-connection # Unique name for your DB connection
+      resourceRef: service:/DatabaseProject/MongoDBCluster/v1/ad088/PUBLIC # Your platform's service reference
+
+# +optional Defines runtime configurations
+configurations:
   env:
     - name: DATABASE_CLUSTER
       valueFrom:
         secretRef:
-          name: database-cluster  # Secret name in your secret manager
+          name: database-cluster # Secret name in your secret manager
     - name: DATABASE_PASSWORD
       valueFrom:
         secretRef:
-          name: database-password  # Secret name for DB password
+          name: database-password # Secret name for DB password
     - name: JWT_SECRET
       valueFrom:
         secretRef:
-          name: jwt-secret  # Secret name for JWT secret
+          name: jwt-secret # Secret name for JWT secret
     - name: JWT_EXPIRES_IN
-      value: 7d  # You can directly set this value
+      value: 7d # You can directly set this value
     - name: EMAIL_HOST
       valueFrom:
         secretRef:
-          name: email-host  # Email host secret
+          name: email-host # Email host secret
     - name: EMAIL_PORT
       valueFrom:
         secretRef:
-          name: email-port  # Email port secret
+          name: email-port # Email port secret
     - name: EMAIL_USERNAME
       valueFrom:
         secretRef:
-          name: email-username  # Email username secret
+          name: email-username # Email username secret
     - name: EMAIL_PASSWORD
       valueFrom:
         secretRef:
-          name: email-password  # Email password secret
+          name: email-password # Email password secret
     - name: PRODUCTION
-      value: false  # Set production flag to false
+      value: false # Set production flag to false
